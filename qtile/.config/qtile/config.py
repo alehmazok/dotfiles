@@ -110,7 +110,9 @@ layouts = [
     layout.Columns(
         border_focus=["#B9CA4A", "#B5BD68"], 
         border_focus_stack=["#ff8400", "#8f3d3d"], 
-        border_width=4,
+        border_width=3,
+        margin=5,
+        insert_position=1,
         ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -149,7 +151,7 @@ screens = [
                 ),
                 # widget.TextBox("default config", name="default"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.ThermalZone(),
+                # widget.ThermalZone(),
                 widget.Memory(),
                 # widget.PulseVolume(),
                 widget.KeyboardLayout(),
