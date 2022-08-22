@@ -107,7 +107,11 @@ for i in groups:
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Columns(border_focus_stack=["#ff8400", "#8f3d3d"], border_width=4),
+    layout.Columns(
+        border_focus=["#B9CA4A", "#B5BD68"], 
+        border_focus_stack=["#ff8400", "#8f3d3d"], 
+        border_width=4,
+        ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -145,6 +149,9 @@ screens = [
                 ),
                 # widget.TextBox("default config", name="default"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.ThermalZone(),
+                widget.Memory(),
+                # widget.PulseVolume(),
                 widget.KeyboardLayout(),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %H:%M"),
@@ -184,6 +191,7 @@ floating_layout = layout.Floating(
         Match(title='Android Emulator'),
         Match(wm_class='lxappearance'),
         Match(wm_class='blueman-manager'),
+        Match(wm_class='gpick'),
     ]
 )
 auto_fullscreen = True
