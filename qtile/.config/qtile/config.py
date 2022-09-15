@@ -75,8 +75,10 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "space", lazy.spawn('rofi -show drun'), desc="Spawn a command using a prompt widget"),
+    Key([mod], "space", lazy.spawn('rofi -show drun'), desc="Spawn an application"),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
+    Key([mod], 'b', lazy.spawn('setxkbmap -model pc105+inet -layout us,by -option grp:caps_toggle'), desc="Set Belarus layout"),
+    Key([mod, 'shift'], 'b', lazy.spawn('setxkbmap -model pc105+inet -layout us,ru -option grp:caps_toggle'), desc="Set Rus layout"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -152,25 +154,46 @@ screens = [
                 # widget.TextBox("default config", name="default"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # widget.ThermalZone(),
+                widget.Wttr(
+                    location={
+                        'Minsk': 'Minsk',
+                        },
+                    padding=20,
+                    ),
                 widget.Memory(
                     measure_mem='G',
                     format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',
-                    padding=0,
+                    padding=20,
                     ),
-                # widget.PulseVolume(),
+                # widget.PulseVolume(
+                #     padding=20,
+                #     ),
+                widget.Wlan(
+                    format='{essid} {percent:2.0%}',
+                    padding=20,
+                    ),
                 widget.KeyboardKbdd(
                     configured_keyboards=['us', 'ru'],
                     padding=20,
                     ),
-                widget.Systray(),
                 widget.Clock(
                     format="%Y-%m-%d %a %H:%M",
                     padding=20,
                     ),
-                widget.QuickExit(),
+                widget.Systray(
+                    icon_size=24,
+                    padding=10,
+                    ),
+                widget.QuickExit(
+                    countdown_start=3,
+                    # default_text='🛑',
+                    padding=20,
+                    ),
             ],
             38,
             background='#111A2D',
+            # border_color='#111A2D',
+            # border_width=[0, 20, 0, 20],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
