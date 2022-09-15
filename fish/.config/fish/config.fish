@@ -3,5 +3,6 @@ if status is-interactive
 end
 
 alias v="nvim"
+alias nv="nvim"
 alias ll="ls -lha"
 alias pacup="sudo pacman -Syy && sudo pacman -Syu"

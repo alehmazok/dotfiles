@@ -111,7 +111,7 @@ layouts = [
         border_focus=["#B9CA4A", "#B5BD68"], 
         border_focus_stack=["#ff8400", "#8f3d3d"], 
         border_width=3,
-        margin=5,
+        margin=0,
         insert_position=1,
         ),
     layout.Max(),
@@ -152,15 +152,25 @@ screens = [
                 # widget.TextBox("default config", name="default"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # widget.ThermalZone(),
-                widget.Memory(),
+                widget.Memory(
+                    measure_mem='G',
+                    format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',
+                    padding=0,
+                    ),
                 # widget.PulseVolume(),
-                widget.KeyboardLayout(),
+                widget.KeyboardKbdd(
+                    configured_keyboards=['us', 'ru'],
+                    padding=20,
+                    ),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %H:%M"),
+                widget.Clock(
+                    format="%Y-%m-%d %a %H:%M",
+                    padding=20,
+                    ),
                 widget.QuickExit(),
             ],
-            32,
-            background='#181818',
+            38,
+            background='#111A2D',
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -180,6 +190,8 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_focus=['#f8f8f8'],
+    border_width=3,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -193,7 +205,8 @@ floating_layout = layout.Floating(
         Match(title='Android Emulator'),
         Match(wm_class='lxappearance'),
         Match(wm_class='blueman-manager'),
-        Match(wm_class='gpick'),
+        Match(wm_class='gpick'),        
+        Match(wm_class='nomacs'),
     ]
 )
 auto_fullscreen = True
