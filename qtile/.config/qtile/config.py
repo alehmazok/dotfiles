@@ -107,6 +107,16 @@ for i in groups:
         ]
     )
 
+colors = [
+            '#111A2D',
+            '#2D112A',
+            '#530030',
+            '#7E0030',
+            '#CA283D',
+            '#FF583D',
+            '#FF7E4A',
+        ]
+
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Columns(
@@ -132,8 +142,8 @@ layouts = [
 
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
-    fontsize=18,
-    padding=3,
+    fontsize=19,
+    padding=0,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -159,10 +169,20 @@ screens = [
                         'Minsk': 'Minsk',
                         },
                     padding=20,
+                    background=colors[1],
                     ),
+                # widget.TextBox(
+                #     text='',
+                #     background=colors[2],
+                #     foreground=colors[1],
+                #     padding=0,
+                #     fontsize=64,
+                #     ),
                 widget.Memory(
                     measure_mem='G',
-                    format='{MemUsed: .1f}{mm} /{MemTotal: .1f}{mm}',
+                    format='{MemUsed:.1f}{mm} /{MemTotal: .1f}{mm}',
+                    background=colors[2],
+                    # foreground=colors[1],
                     padding=20,
                     ),
                 # widget.PulseVolume(
@@ -171,14 +191,18 @@ screens = [
                 widget.Wlan(
                     format='{essid} {percent:2.0%}',
                     padding=20,
+                    background=colors[3]
                     ),
                 widget.KeyboardKbdd(
-                    configured_keyboards=['us', 'ru'],
+                    configured_keyboards=['us', 'ru', 'by'],
                     padding=20,
+                    background=colors[4],
                     ),
                 widget.Clock(
-                    format="%Y-%m-%d %a %H:%M",
+                    # format="%Y-%m-%d %a %H:%M",
+                    format='%B %d, %H:%M',
                     padding=20,
+                    background=colors[5],
                     ),
                 widget.Systray(
                     icon_size=24,
