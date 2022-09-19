@@ -15,3 +15,6 @@ nitrogen --restore &
 # Xbindkeys
 xbindkeys &
 
+# Picom compositor
+# picom &
+

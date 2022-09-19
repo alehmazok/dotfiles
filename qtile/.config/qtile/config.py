@@ -76,6 +76,11 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "space", lazy.spawn('rofi -show drun'), desc="Spawn an application"),
+    Key([mod, 'shift'], "space", lazy.spawn('rofi -show p -modi p:rofi-power-menu \
+                        -theme squared-everforest \
+                        -font "JetBrains Mono 16" \
+                        -width 20 \
+                        -lines 6'), desc="Spawn an power menu"),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], 'b', lazy.spawn('setxkbmap -model pc105+inet -layout us,by -option grp:caps_toggle'), desc="Set Belarus layout"),
     Key([mod, 'shift'], 'b', lazy.spawn('setxkbmap -model pc105+inet -layout us,ru -option grp:caps_toggle'), desc="Set Rus layout"),
@@ -191,7 +196,8 @@ screens = [
                 widget.Wlan(
                     format='{essid} {percent:2.0%}',
                     padding=20,
-                    background=colors[3]
+                    background=colors[3],
+                    interface='wlan0',
                     ),
                 widget.KeyboardKbdd(
                     configured_keyboards=['us', 'ru', 'by'],
