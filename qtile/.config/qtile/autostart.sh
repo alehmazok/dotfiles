@@ -1,5 +1,7 @@
 #!/bin/sh
 
+xmodmap $HOME/.Xmodmap
+
 # Mouse cursor theme
 xsetroot -cursor_name left_ptr
 
@@ -18,3 +20,8 @@ xbindkeys &
 # Picom compositor
 # picom &
 
+# Polkit
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Network manager applet
+nm-applet &

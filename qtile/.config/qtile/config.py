@@ -76,11 +76,13 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "space", lazy.spawn('rofi -show drun'), desc="Spawn an application"),
-    Key([mod, 'shift'], "space", lazy.spawn('rofi -show p -modi p:rofi-power-menu \
+    Key([mod, 'shift'], "space", lazy.spawn('rofi -show p -modi \
+                        "p:rofi-power-menu --choices=lockscreen/logout/reboot/shutdown" \
                         -theme squared-everforest \
                         -font "JetBrains Mono 16" \
                         -width 20 \
-                        -lines 6'), desc="Spawn an power menu"),
+                        -lines 6'
+                        ), desc="Spawn an power menu"),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], 'b', lazy.spawn('setxkbmap -model pc105+inet -layout us,by -option grp:caps_toggle'), desc="Set Belarus layout"),
     Key([mod, 'shift'], 'b', lazy.spawn('setxkbmap -model pc105+inet -layout us,ru -option grp:caps_toggle'), desc="Set Rus layout"),
@@ -156,10 +158,19 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.CurrentLayout(
+                    padding=20,
+                    ),
+                widget.GroupBox(
+                    margin_x=5,
+                    padding_x=6,
+                    padding_y=2,
+                    # spacing=10,
+                    ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(
+                    padding=20,
+                    ),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -174,7 +185,7 @@ screens = [
                         'Minsk': 'Minsk',
                         },
                     padding=20,
-                    background=colors[1],
+                    background=colors[0],
                     ),
                 # widget.TextBox(
                 #     text='',
@@ -183,32 +194,41 @@ screens = [
                 #     padding=0,
                 #     fontsize=64,
                 #     ),
+                # widget.Bluetooth(),
+                widget.ThermalSensor(
+                        tag_sensor='edge',
+                        padding=20,
+                        background=colors[1],
+                        # fmt='GPU: {}',
+                    ),
                 widget.Memory(
-                    measure_mem='G',
-                    format='{MemUsed:.1f}{mm} /{MemTotal: .1f}{mm}',
-                    background=colors[2],
-                    # foreground=colors[1],
-                    padding=20,
+                        measure_mem='G',
+                        format='{MemUsed:.1f}{mm} /{MemTotal: .1f}{mm}',
+                        background=colors[2],
+                        # foreground=colors[1],
+                        padding=20,
+                        # fmt='RAM: {}',
                     ),
                 # widget.PulseVolume(
                 #     padding=20,
                 #     ),
-                widget.Wlan(
-                    format='{essid} {percent:2.0%}',
-                    padding=20,
-                    background=colors[3],
-                    interface='wlan0',
-                    ),
+                # widget.Wlan(
+                #     format='{essid} {percent:2.0%}',
+                #     padding=20,
+                #     background=colors[3],
+                #     interface='wlan1',
+                #     # fmt='Wifi: {}',
+                #     ),
                 widget.KeyboardKbdd(
                     configured_keyboards=['us', 'ru', 'by'],
                     padding=20,
-                    background=colors[4],
+                    background=colors[3],
                     ),
                 widget.Clock(
                     # format="%Y-%m-%d %a %H:%M",
                     format='%B %d, %H:%M',
                     padding=20,
-                    background=colors[5],
+                    background=colors[4],
                     ),
                 widget.Systray(
                     icon_size=24,
@@ -260,6 +280,7 @@ floating_layout = layout.Floating(
         Match(wm_class='blueman-manager'),
         Match(wm_class='gpick'),        
         Match(wm_class='nomacs'),
+        Match(wm_class='nm-connection-editor'),
     ]
 )
 auto_fullscreen = True
