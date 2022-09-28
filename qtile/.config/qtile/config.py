@@ -263,7 +263,7 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_focus=['#f8f8f8'],
+    border_focus=['#FF9B54'],
     border_width=3,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.

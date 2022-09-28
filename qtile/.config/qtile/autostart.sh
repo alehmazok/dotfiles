@@ -25,3 +25,6 @@ xbindkeys &
 
 # Network manager applet
 nm-applet &
+
+# Clipboard manager
+clipit &
