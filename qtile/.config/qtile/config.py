@@ -116,6 +116,7 @@ for i in groups:
 
 colors = [
             '#111A2D',
+            '#1D2E4E',
             '#2D112A',
             '#530030',
             '#7E0030',
@@ -185,7 +186,13 @@ screens = [
                         'Minsk': 'Minsk',
                         },
                     padding=20,
-                    background=colors[0],
+                    # background=colors[0],
+                    ),
+                widget.Sep(
+                    padding=10,
+                    linewidth=2,
+                    foreground=colors[1],
+                    size_percent=100,
                     ),
                 # widget.TextBox(
                 #     text='',
@@ -198,13 +205,19 @@ screens = [
                 widget.ThermalSensor(
                         tag_sensor='edge',
                         padding=20,
-                        background=colors[1],
+                        # background=colors[1],
                         # fmt='GPU: {}',
+                    ),
+                widget.Sep(
+                    padding=10,
+                    linewidth=2,
+                    foreground=colors[1],
+                    size_percent=100,
                     ),
                 widget.Memory(
                         measure_mem='G',
                         format='{MemUsed:.1f}{mm} /{MemTotal: .1f}{mm}',
-                        background=colors[2],
+                        # background=colors[2],
                         # foreground=colors[1],
                         padding=20,
                         # fmt='RAM: {}',
@@ -219,26 +232,53 @@ screens = [
                 #     interface='wlan1',
                 #     # fmt='Wifi: {}',
                 #     ),
+                widget.Sep(
+                    padding=10,
+                    linewidth=2,
+                    foreground=colors[1],
+                    size_percent=100,
+                    ),
                 widget.KeyboardKbdd(
                     configured_keyboards=['us', 'ru', 'by'],
                     padding=20,
-                    background=colors[3],
+                    # background=colors[3],
+                    ),
+                widget.Sep(
+                    padding=10,
+                    linewidth=2,
+                    foreground=colors[1],
+                    size_percent=100,
                     ),
                 widget.Clock(
                     # format="%Y-%m-%d %a %H:%M",
                     format='%B %d, %H:%M',
                     padding=20,
-                    background=colors[4],
+                    # background=colors[4],
+                    ),
+                widget.Sep(
+                    padding=10,
+                    linewidth=2,
+                    foreground=colors[1],
+                    size_percent=100,
                     ),
                 widget.Systray(
                     icon_size=24,
-                    padding=10,
-                    ),
-                widget.QuickExit(
-                    countdown_start=3,
-                    # default_text='🛑',
                     padding=20,
                     ),
+                widget.Spacer(
+                        length=30,
+                        ),
+                # widget.Sep(
+                #     padding=10,
+                #     linewidth=2,
+                #     foreground=colors[1],
+                #     size_percent=100,
+                #     ),
+                # widget.QuickExit(
+                #     countdown_start=3,
+                #     # default_text='🛑',
+                #     padding=20,
+                #     ),
             ],
             38,
             background='#111A2D',
@@ -281,6 +321,7 @@ floating_layout = layout.Floating(
         Match(wm_class='gpick'),        
         Match(wm_class='nomacs'),
         Match(wm_class='nm-connection-editor'),
+        Match(wm_class='thunar'),
     ]
 )
 auto_fullscreen = True

@@ -48,11 +48,12 @@ bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
 # Neofetch perfomance
-cat .nf 2> /dev/null
-setsid neofetch >| .nf
+# cat .nf 2> /dev/null
+# setsid neofetch >| .nf
 
 # Aleh's aliases
-alias ll="ls -lha"
+# alias ll="ls -lha"
+alias ll="exa -lha"
 alias pacup="sudo pacman -Syy && sudo pacman -Syu"
 alias yup="yay -Syu && yay -Syu"
 

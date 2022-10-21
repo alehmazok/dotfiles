@@ -1,7 +1,5 @@
 #!/bin/sh
 
-xmodmap $HOME/.Xmodmap
-
 # Mouse cursor theme
 xsetroot -cursor_name left_ptr
 
@@ -10,6 +8,9 @@ setxkbmap -model pc105+inet -layout us,ru -option grp:caps_toggle &
 
 # Keyboard per application daemon
 kbdd &
+
+# Keys remappgings
+xmodmap $HOME/.Xmodmap
 
 # Nitrogen
 nitrogen --restore &
@@ -27,4 +28,4 @@ xbindkeys &
 nm-applet &
 
 # Clipboard manager
-clipit &
+# clipit &
