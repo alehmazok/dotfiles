@@ -10,7 +10,8 @@ setxkbmap -model pc105+inet -layout us,ru -option grp:caps_toggle &
 kbdd &
 
 # Keys remappgings
-xmodmap $HOME/.Xmodmap
+# No need to load it when using LightDM
+# xmodmap $HOME/.Xmodmap
 
 # Nitrogen
 nitrogen --restore &

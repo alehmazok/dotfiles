@@ -56,6 +56,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 alias ll="exa -lha"
 alias pacup="sudo pacman -Syy && sudo pacman -Syu"
 alias yup="yay -Syu && yay -Syu"
+# alias google-chrome="chromium"
 
 # Starship
 eval "$(starship init zsh)"
