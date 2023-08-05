@@ -38,6 +38,8 @@ backward-kill-dir () {
 }
 zle -N backward-kill-dir
 bindkey '^[^?' backward-kill-dir
+# Delete key
+bindkey "^[[3~" delete-char
 
 # Search history
 autoload -U up-line-or-beginning-search
@@ -55,9 +57,19 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # alias ll="ls -lha"
 alias ll="exa -lha"
 alias pacup="sudo pacman -Syy && sudo pacman -Syu"
-alias yup="yay -Syu && yay -Syu"
+alias yayup="yay -Syu && yay -Syu"
 # alias google-chrome="chromium"
 
 # Starship
 eval "$(starship init zsh)"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+autoload zmv
+
+## [Completion] 
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/aleh/.config/.dart-cli-completion/zsh-config.zsh ]] && . /home/aleh/.config/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
 
